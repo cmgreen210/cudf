@@ -438,5 +438,11 @@ def column_hash_values(column0, *other_columns):
     _gdf.hash_columns(columns, result)
     return result
 
+def column_search_sorted(column, asc_values):
+    buf = Buffer(rmm.device_array(len(column), dtype=np.int32))
+    result = NumericalColumn(data=buf, dtype=buf.dtype)
+    d_asc_values = rmm.to_device(asc_values)
+    _gdf.search_sorted(column, d_asc_values, result)
+    return result
 
 register_distributed_serializer(NumericalColumn)

@@ -594,3 +594,18 @@ def quantile(column, quant, method, exact):
                                        gdf_context)
         res.append(px[0])
     return res
+
+
+def search_sorted(column, asc_values, result):
+    """Hash the *columns* and store in *result*.
+    Returns *result*
+    """
+    assert result.dtype == np.int32
+    # No-op for 0-sized
+    if len(result) == 0:
+        return result
+    col_input = column.cffi_view
+    col_out = result.cffi_view
+    num_asc_values = asc_values.shape[0]
+    libgdf.gdf_digitize(col_input, unwrap_devary(asc_values), num_asc_values, True, col_out)
+    return result
