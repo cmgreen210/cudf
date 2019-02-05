@@ -171,7 +171,7 @@ ConfigureTest(CSV_TEST "${CSV_TEST_SRC}")
 # - sort tests -------------------------------------------------------------------------------------
 
 set(SORT_TEST_SRC
-    "${CMAKE_CURRENT_SOURCE_DIR}/sort/binsearch_test.cu")
+    "${CMAKE_CURRENT_SOURCE_DIR}/sort/digitize_test.cu")
 
 ConfigureTest(SORT_TEST "${SORT_TEST_SRC}")
 ###################################################################################################
