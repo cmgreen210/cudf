@@ -37,9 +37,9 @@ namespace { // unnamed namespace
     ColumnType const * const p_bins{static_cast<ColumnType*>(bins)};
     ColumnType const * const p_values{static_cast<ColumnType const*>(col_data)};
     if (upper_bound)
-      thrust::upper_bound(rmm::exec_policy()->on(0), p_bins, p_bins + num_bins, p_values, p_values + num_rows, output);
+      thrust::upper_bound(rmm::exec_policy()->on(0), p_bins, p_bins + num_bins, p_values, p_values + num_rows, output, thrust::less_equal<ColumnType>());
     else
-      thrust::lower_bound(rmm::exec_policy()->on(0), p_bins, p_bins + num_bins, p_values, p_values + num_rows, output);
+      thrust::lower_bound(rmm::exec_policy()->on(0), p_bins, p_bins + num_bins, p_values, p_values + num_rows, output, thrust::less_equal<ColumnType>());
   }
 } // end unnamed namespace
 

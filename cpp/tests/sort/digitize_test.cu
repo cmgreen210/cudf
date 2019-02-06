@@ -121,11 +121,11 @@ void digitize_detail(bool right, const std::vector<int32_t>& expected) {
 }
 
 TEST(DigitizeTest, UpperBoundDetail) {
-  std::vector<int32_t> expected{0, 1, 1, 2, 2, 5, 5};
+  std::vector<int32_t> expected{0, 0, 1, 1, 2, 4, 5};
   digitize_detail(true, expected);
 }
 
 TEST(DigitizeTest, LowerBoundDetail) {
-  std::vector<int32_t> expected{0, 0, 1, 1, 2, 4, 5};
+  std::vector<int32_t> expected{0, 1, 1, 2, 2, 5, 5};
   digitize_detail(false, expected);
 }
